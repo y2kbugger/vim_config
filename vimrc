@@ -15,7 +15,7 @@ set foldmethod=marker
 
 "force jk mapping for normal mode
 inoremap jk <esc>
-inoremap <esc> <nop>
+" inoremap <esc> <nop> "disabled because it caused issues with any key that included esc sequences
 
 "dont let arrow keys be used at all
 noremap <left> <nop>
@@ -23,6 +23,10 @@ noremap <right> <nop>
 noremap <up> <nop>
 noremap <down> <nop>
 
+" link X primary with the default register
+set clipboard=unnamed
 
+"auto wrap git commit messages
+autocmd Filetype gitcommit setlocal spell textwidth=72
 
-
+nnoremap <F5> :w<Enter>:!%:p<Enter>
