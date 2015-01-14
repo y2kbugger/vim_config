@@ -6,6 +6,7 @@ colorscheme solarized
 
 set mouse=a
 
+"show line numbers
 set number
 
 set splitbelow
@@ -29,4 +30,8 @@ set clipboard=unnamed
 "auto wrap git commit messages
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
+"automatically run a file
 nnoremap <F5> :w<Enter>:!%:p<Enter>
+
+"set up tabstops and converting tabs to spaces
+set tabstop=8 softtabstop=8 shiftwidth=8 expandtab
