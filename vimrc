@@ -40,3 +40,9 @@ set tabstop=8 softtabstop=8 shiftwidth=8 expandtab
 nmap <leader>l :set list!<CR>
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
+
+"enable partial matching as i type
+set incsearch
+
+"enable highlighting on searches
+set hlsearch
