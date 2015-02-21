@@ -64,7 +64,7 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 nnoremap <F5> :w<Enter>:!%:p<Enter>
 
 "set up tabstops and converting tabs to spaces
-set tabstop=8 softtabstop=8 shiftwidth=8 expandtab
+set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
