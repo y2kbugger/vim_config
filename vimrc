@@ -84,7 +84,30 @@ let g:ctrlp_show_hidden = 1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 "let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$|\./(Android|vids|musik|pics|oldhome)',
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|Android|vids|musik|pics|oldhome|AndroidStudio|\.gradle|\.cache|eclipse4\.3\.1)$',
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
+"cache across sessions
+let g:ctrlp_clear_cache_on_exit = 0
+"make it taller
+let g:ctrlp_max_height = 20
+"recent files to remember
+let g:ctrlp_mruf_max = 2500
+"
+let g:ctrlp_mruf_exclude = '/tmp/.*' 
+"disable MRU mode searching
+let g:ctrlp_mruf_default_order = 1
+nnoremap <leader>f :CtrlP<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>m :CtrlPMRUFiles<CR>
+nnoremap <leader>t :CtrlPTag<CR>
+nnoremap <leader>o :CtrlPMixed<CR>
+
+" enable per-directory .vimrc files
+set exrc           
+set secure " disable unsafe commands in local .vimrc files
+
+"sensible settings for put
+nnoremap p P
+nnoremap P p
