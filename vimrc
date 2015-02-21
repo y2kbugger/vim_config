@@ -67,7 +67,7 @@ nnoremap <F5> :w<Enter>:!%:p<Enter>
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
 
-"enable partial matching as i type
+"enable partial matching as I type
 set incsearch
 
 "enable highlighting on searches
