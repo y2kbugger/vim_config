@@ -4,7 +4,37 @@ set t_Co=16
 set background=dark
 colorscheme solarized
 
-set mouse=a
+"set mouse=a
+
+" Shortcut to rapidly toggle `set list`
+nmap <leader>l :set list!<CR>
+set list
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:>»,eol:¬
+"fixes issue where colors are rendered incorrectly because of bold/italics
+let g:solarized_italic=0
+let g:solarized_bold=0
+"make whitespace and special keys like tab invisible except when on top of them
+let g:solarized_visibility="low"
+
+
+"print all 16 term colors on each of the 4 solarized backgrounds
+command! VimColorTest call VimColorTest('vim-color-test.tmp')
+function! VimColorTest(outfile)
+  let result = []
+    for bg in [0,8,7,15]
+    for fg in range(0,15)
+        let kw = printf('%-7s', printf('c_%d_%d', fg, bg))
+        let h = printf('hi %s ctermfg=%d ctermbg=%d', kw, fg, bg)
+        let s = printf('syn keyword %s %s', kw, kw)
+        call add(result, printf('%-32s | %s', h, s))
+     endfor
+     call add(result, '')
+  endfor
+  call writefile(result, a:outfile)
+  execute 'edit '.a:outfile
+  source %
+endfunction
 
 "show line numbers
 set number
