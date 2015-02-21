@@ -73,6 +73,12 @@ set incsearch
 "enable highlighting on searches
 set hlsearch
 
+"increase the memorizes commands in vim, also increases ctrlp historyi
+set history=1000
+
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+
 "stuff for ctrlP (fuzzy searching)
 let g:ctrlp_show_hidden = 1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
