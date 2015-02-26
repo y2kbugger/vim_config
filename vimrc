@@ -4,7 +4,7 @@ set t_Co=16
 set background=dark
 colorscheme solarized
 
-"set mouse=a
+set mouse=n
 
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
