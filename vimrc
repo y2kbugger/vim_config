@@ -111,3 +111,7 @@ set secure " disable unsafe commands in local .vimrc files
 "sensible settings for put
 nnoremap p P
 nnoremap P p
+
+"my personal dictionary
+set spell
+set spellfile=/home/y2k/.vim/spell/y2k.utf-8.add
