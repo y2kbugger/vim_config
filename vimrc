@@ -95,14 +95,11 @@ let g:ctrlp_max_height = 20
 "recent files to remember
 let g:ctrlp_mruf_max = 2500
 "
-let g:ctrlp_mruf_exclude = '/tmp/.*' 
-"disable MRU mode searching
-let g:ctrlp_mruf_default_order = 1
-nnoremap <leader>f :CtrlP<CR>
-nnoremap <leader>b :CtrlPBuffer<CR>
-nnoremap <leader>m :CtrlPMRUFiles<CR>
-nnoremap <leader>t :CtrlPTag<CR>
-nnoremap <leader>o :CtrlPMixed<CR>
+let g:ctrlp_mruf_exclude = '/tmp/.*|\.vifm/.*' 
+"disable MRU mode sorting
+"let g:ctrlp_mruf_default_order = 1
+let g:ctrlp_map = '<leader>m'
+let g:ctrlp_cmd = 'CtrlPMRUFiles'
 
 " enable per-directory .vimrc files
 set exrc           
