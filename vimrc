@@ -112,3 +112,6 @@ nnoremap P p
 "my personal dictionary
 set spell
 set spellfile=/home/y2k/.vim/spell/y2k.utf-8.add
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
