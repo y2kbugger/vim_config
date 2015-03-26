@@ -119,3 +119,6 @@ cmap w!! w !sudo tee > /dev/null %
 " allow deletion without killing my buffer
 nmap <silent> <leader>d "_d 
 vmap <silent> <leader>d "_d
+
+" quickly clear search highlight
+map //  :nohlsearch<CR>; echo 'Search highlight cleared' <CR> 
