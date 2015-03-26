@@ -122,3 +122,14 @@ vmap <silent> <leader>d "_d
 
 " quickly clear search highlight
 map //  :nohlsearch<CR>; echo 'Search highlight cleared' <CR> 
+
+" we all know this trick, unsure of wether it will stick
+nnoremap ; :
+nnoremap : ;
+vnoremap ; :
+vnoremap : ;
+
+" and now a fix for the command-line buffer
+nnoremap q; q:
+vnoremap q; q:
+
