@@ -95,7 +95,7 @@ let g:ctrlp_max_height = 20
 "recent files to remember
 let g:ctrlp_mruf_max = 2500
 "
-let g:ctrlp_mruf_exclude = '/tmp/.*|\.vifm/.*' 
+let g:ctrlp_mruf_exclude = '/tmp/.*|\.vifm/.*|/usr/share/.*' 
 "disable MRU mode sorting
 "let g:ctrlp_mruf_default_order = 1
 let g:ctrlp_map = '<leader>m'
