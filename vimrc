@@ -120,9 +120,6 @@ cmap w!! w !sudo tee > /dev/null %
 nmap <silent> <leader>d "_d 
 vmap <silent> <leader>d "_d
 
-" quickly clear search highlight
-map //  :nohlsearch<CR>; echo 'Search highlight cleared' <CR> 
-
 " we all know this trick, unsure of wether it will stick
 nnoremap ; :
 nnoremap : ;
