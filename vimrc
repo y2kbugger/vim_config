@@ -117,7 +117,7 @@ set spellfile=/home/y2k/.vim/spell/y2k.utf-8.add
 cmap w!! w !sudo tee > /dev/null %
 
 " allow deletion without killing my buffer
-nmap <silent> <leader>d "_d 
+nmap <silent> <leader>d "_d
 vmap <silent> <leader>d "_d
 
 " we all know this trick, unsure of wether it will stick
