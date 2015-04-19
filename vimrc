@@ -95,7 +95,7 @@ let g:ctrlp_max_height = 20
 "recent files to remember
 let g:ctrlp_mruf_max = 2500
 "
-let g:ctrlp_mruf_exclude = '/tmp/.*|\.vifm/.*|/usr/share' 
+let g:ctrlp_mruf_exclude = '/tmp/.*\|\.vifm/.*\|/usr/share' 
 "disable MRU mode sorting
 "let g:ctrlp_mruf_default_order = 1
 let g:ctrlp_map = '<leader>m'
@@ -114,7 +114,7 @@ set spell
 set spellfile=/home/y2k/.vim/spell/y2k.utf-8.add
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
-cmap w!! w !sudo tee > /dev/null %
+command W w !sudo tee > /dev/null %
 
 " allow deletion without killing my buffer
 nmap <silent> <leader>d "_d
