@@ -13,6 +13,7 @@ Plugin 'mbbill/undotree'
 Plugin 'chrisbra/Recover.vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'lervag/vimtex'
+Plugin 'ervandew/supertab'
 call vundle#end()
 filetype plugin indent on    " required
 "===============================================
@@ -198,9 +199,9 @@ set completeopt=longest,menuone
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' :'<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 "easier omnicompletion
 set omnifunc=syntaxcomplete#Complete
-"for some reason C-@ is space in terminals this works in both
+"for some reason C-@ is space in terminals
 inoremap <C-Space> <C-x><C-o>
-inoremap <C-@> <C-Space>
+inoremap <C-@> <C-x><C-o>
 
 
 "when editing tex us mupdf as the viewer
