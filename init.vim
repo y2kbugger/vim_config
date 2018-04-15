@@ -32,6 +32,8 @@ execute pathogen#infect()
 
 " enable syntax highlighting
 syntax enable
+" enable commentstring and indention awareness
+filetype plugin indent on
 
 " allow bright colors without bold colors
 set t_Co=16
@@ -163,6 +165,7 @@ noremap  <buffer> <silent> j gj
 nmap <Right> dp]c
 nmap <Up> [c
 nmap <Down> ]c
+
 
 " Handicaps
 "-----------
@@ -305,10 +308,7 @@ let g:SimpylFold_fold_import = 0
 
 " tpope/vim-commentary
 au FileType awk
- \ set commentstring=#\ %s
-au FileType vim
- \ set commentstring=\"\ %s
-
+ \ setlocal commentstring=#\ %s
 
 " mbbill/undotree
 " nnoremap <leader>u :UndotreeToggle<cr>
