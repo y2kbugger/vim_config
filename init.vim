@@ -118,10 +118,13 @@ set autochdir
 setglobal complete-=i
 
 " persist undos across vim instances
-" set undofile
-" set undodir=~/.vim/undodir,~/vimfiles/undodir,.
-" set undolevels=5000
-" set undoreload=50000
+" Vim will detect if an undo file is no longer synchronized with the file it was
+" written for (with a hash of the file contents) and ignore it when the file was
+" changed after the undo file was written, to prevent corruption.
+set undofile
+" set undodir=~/vim/undodir,~/vimfiles/undodir,.
+set undolevels=500
+set undoreload=10000
 
 
 "#########
