@@ -234,7 +234,7 @@ au Filetype java
    \ match WhiteSpaceEOL /\(^+.*\)\@<=\s\+$/
 
   au Syntax gitcommit
-   \ setlocal spell textwidth=74
+   \ setlocal spell textwidth=72
 
 " Functions
 "-----------
