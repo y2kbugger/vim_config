@@ -199,17 +199,24 @@ inoremap <C-U> <C-G>u<C-U>
 au FileType tex
  \ setl sw=2 sts=2 et
 
+" :terminal
+" when you are in :terminal allow <c-w> to get you all of the way out
+" https://www.reddit.com/r/neovim/comments/6kf7vh/i_have_been_doing_everything_inside_of_neovims/
+tnoremap <C-w> <C-\><C-n><C-w>
+" start terminals in insert mode
+" https://vi.stackexchange.com/questions/3670/how-to-enter-insert-mode-when-entering-neovim-terminal-pane
+autocmd TermOpen,BufWinEnter,WinEnter term://* startinsert
+
 " automatically run a file
-nnoremap <F5> :w<Enter>:!%:p<Enter>
-inoremap <F5> <ESC>:w<Enter>:!%:p<Enter>
+nnoremap <F5> :update<Bar>terminal%<CR>
 au Filetype c,cpp
- \ nnoremap <buffer> <F5> :update<Bar>execute '!make '.shellescape(expand('%:r'), 1)<CR><CR>
-" au Filetype python
-"  \ nnoremap <buffer> <F5> :update<Bar>execute ':Spawn python '.shellescape(@%, 1)<CR><CR>
+ \ nnoremap <buffer> <F5> :update<Bar>terminal make<CR>
 au Filetype python
- \ nnoremap <buffer> <F5> :update<Bar>execute ':terminal python '.shellescape(@%, 1)<CR><CR>
+ \ nnoremap <buffer> <F5> :update<Bar>terminal python %<CR>
 au Filetype java
- \ nnoremap <buffer> <F5> :update<Bar>execute '!javac '.shellescape(@%, 1)<CR><CR>
+ \ nnoremap <buffer> <F5> :update<Bar>execute javac %<CR>
+
+imap <F5> <ESC><F5>
 
 " git
 " found this in the git portable config:
