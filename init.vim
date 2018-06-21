@@ -38,7 +38,7 @@ filetype plugin indent on
 " allow bright colors without bold colors
 set t_Co=16
 set background=dark
-colorscheme solarized
+colorscheme neosolarized
 " fixes issue where colors are rendered incorrectly because of bold/italics
 let g:solarized_italic=0
 let g:solarized_bold=0
@@ -302,8 +302,43 @@ let g:deoplete#sources#jedi#server_timeout = 30
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" Shougo/denite Mappings
-nmap <leader><Space> :call feedkeys(':Denite<Space><Tab>','t')<cr>
+" Shougo/denite
+" Change ignore_globs
+call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [
+    \ '__pycache__\',
+    \ '*.pyc',
+    \ '.git\',
+    \ '*~',
+    \ '*.sw[po]',
+    \ ])
+   " Other Suggestions
+   " Ensure you are doing triailing \ for the right os on dirs
+   " '*.o',
+   " '*.exe',
+   " '*.bak',
+   " '.DS_Store',
+   " '*.pyc',
+   " '*.class',
+   " '.hg/',
+   " '.bzr/',
+   " '.svn/',
+   " 'tags',
+   " 'tags-*',
+   " 'venv/',
+   " 'images/',
+   " '*.min.*',
+   " 'img/',
+   " 'fonts/',
+
+   " Change matchers
+call denite#custom#source(
+    \ 'file_rec', 'matchers', ['matcher/substring', 'matcher/ignore_globs'])
+" Change sorters.From example in docs
+call denite#custom#source(
+    \ 'file_rec', 'sorters', ['sorter/sublime'])
+nmap <leader><Space> :<C-u>Denite<Space>
+nmap <leader>n :<C-u>Denite file_rec<CR>
+nmap <leader>m :<C-u>Denite file_old<CR>
 
 " vimtex
 " mupdf as viewer
