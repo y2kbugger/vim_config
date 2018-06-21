@@ -38,7 +38,7 @@ filetype plugin indent on
 " allow bright colors without bold colors
 set t_Co=16
 set background=dark
-colorscheme neosolarized
+colorscheme NeoSolarized
 " fixes issue where colors are rendered incorrectly because of bold/italics
 let g:solarized_italic=0
 let g:solarized_bold=0
