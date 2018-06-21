@@ -19,3 +19,9 @@
 [submodule "bundle/SimpylFold"]
 	path = bundle/SimpylFold
 	url = https://github.com/tmhedberg/SimpylFold.git
+[submodule "colors/NeoSolarized"]
+	path = colors/NeoSolarized
+	url = https://github.com/icymind/NeoSolarized.git
+[submodule "bundle/NeoSolarized"]
+	path = bundle/NeoSolarized
+	url = https://github.com/icymind/NeoSolarized.git
