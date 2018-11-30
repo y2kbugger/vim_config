@@ -1,6 +1,6 @@
+:bd
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
-
 " example of how to add a new plugin
 "   [y2k@15r vim_config]
 "   $ git submodule add https://github.com/zchee/deoplete-jedi.git bundle/deoplete-jedi
@@ -26,6 +26,7 @@ execute pathogen#infect()
 " tpope/vim-fugitive # git
 " Shougo/neomru.vim # more performant, longer mru for deoplete
 
+let g:python3_host_prog='C:\ProgramData\CooperConda\pythonw.exe'
 "##################
 " General Settings
 "##################
@@ -109,7 +110,8 @@ set spellfile=~/.config/nvim/spell/en.utf-8.add
 set scrolloff=15
 
 " always make the current directory your working directory
-set autochdir
+" set autochdir
+" trying to use vim rooter for this
 
 "set the wrapping text width
 "set textwidth=64
@@ -345,11 +347,14 @@ nmap <leader>m :<C-u>Denite file_old<CR>
 let g:vimtex_view_method = 'mupdf'
 
 " ntpeters/vim-better-whitespace
-highlight ExtraWhitespace ctermbg=6 guibg=#2aa198
+let g:better_whitespace_ctermcolor = 'green'
+let g:better_whitespace_guicolor = 'green'
+let g:better_whitespace_enabled = 1
 
 " tmhedberg/SimpylFold
 let g:SimpylFold_fold_docstring = 0
 let g:SimpylFold_fold_import = 0
+
 
 " tpope/vim-commentary
 au FileType awk
