@@ -305,9 +305,11 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " Shougo/denite
 " Change ignore_globs
 call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [
-    \ '__pycache__\',
+    \ '__pycache__/',
+    \ '.mypy_cache/',
+    \ '.pytest_cache/',
     \ '*.pyc',
-    \ '.git\',
+    \ '.git/',
     \ '*~',
     \ '*.sw[po]',
     \ ])
