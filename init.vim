@@ -25,11 +25,14 @@ execute pathogen#infect()
 " vim-surround # parens
 " tpope/vim-fugitive # git
 " Shougo/neomru.vim # more performant, longer mru for deoplete
-
-let g:python3_host_prog='C:\ProgramData\CooperConda\pythonw.exe'
 "##################
 " General Settings
 "##################
+
+" force in python path on windows
+if has('win32')
+    let g:python3_host_prog='C:\ProgramData\CooperConda\pythonw.exe'
+endif
 
 " enable syntax highlighting
 syntax enable
