@@ -25,3 +25,6 @@
 [submodule "bundle/NeoSolarized"]
 	path = bundle/NeoSolarized
 	url = https://github.com/icymind/NeoSolarized.git
+[submodule "bundle/vim-rooter"]
+	path = bundle/vim-rooter
+	url = https://github.com/airblade/vim-rooter.git
