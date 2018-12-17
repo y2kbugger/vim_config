@@ -62,6 +62,9 @@ set formatoptions+=j
 set breakindent
 set breakindentopt=min:20,shift:2
 
+" allow nonsaved buffers to be hidden
+set hidden
+
 " enable the bashlike commandline completion
 set wildmenu
 set wildmode=longest:list,full
