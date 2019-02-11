@@ -1,4 +1,7 @@
-:bd
+" Working around a neovimqt bug
+if has('win32')
+    :bd
+endif
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 " example of how to add a new plugin
@@ -67,7 +70,7 @@ set breakindent
 set breakindentopt=min:20,shift:2
 
 " allow nonsaved buffers to be hidden
-set hidden
+" set hidden
 
 " enable the bashlike commandline completion
 set wildmenu
@@ -76,8 +79,6 @@ set wildmode=longest:list,full
 " Use the symbols for tab and EOL
 "set listchars=tab:»·,eol:¬ " from windows. shows invisible on diff on linux...hmm
 set listchars=tab:»·,eol:¬
-" Shortcut to rapidly toggle `set list`
-nmap <leader>l :set list!<CR>
 set list
 
 " show line numbers
@@ -141,14 +142,13 @@ set undoreload=10000
 
 " Simple
 "--------
+" <SPACE> as the my leader (talk to him)
+nnoremap <SPACE> <Nop>
+let mapleader=" "
 " jk mapping for normal mode
 inoremap jk <esc>
 " quickly open the command-line buffer from command mode
 cnoremap jk <C-F>
-" <SPACE> as the my leader (talk to him)
-nnoremap <SPACE> <Nop>
-let mapleader=" "
-let maplocalleader='\'
 
 " only use the mouse for moving the cursor and scrolling
 " don't let in start highlighting things
@@ -204,6 +204,10 @@ vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>
 " break the undo sequence and start a new change
 inoremap <C-U> <C-G>u<C-U>
 
+" scheme
+au BufReadPost *.rkt,*.rktl
+ \ set filetype=scheme
+
 au FileType tex
  \ setl sw=2 sts=2 et
 
@@ -213,7 +217,7 @@ au FileType tex
 tnoremap <C-w> <C-\><C-n><C-w>
 " start terminals in insert mode
 " https://vi.stackexchange.com/questions/3670/how-to-enter-insert-mode-when-entering-neovim-terminal-pane
-autocmd TermOpen,BufWinEnter,WinEnter term://* startinsert
+au TermOpen,BufWinEnter,WinEnter term://* startinsert
 
 " automatically run a file
 nnoremap <F5> :update<Bar>terminal%<CR>
@@ -223,6 +227,8 @@ au Filetype python
  \ nnoremap <buffer> <F5> :update<Bar>terminal python %<CR>
 au Filetype java
  \ nnoremap <buffer> <F5> :update<Bar>execute javac %<CR>
+au BufReadPost *.rkt,*.rktl
+ \ nnoremap <buffer> <F5> :update<Bar>terminal racket %<CR>
 
 imap <F5> <ESC><F5>
 
@@ -312,17 +318,30 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Shougo/denite
 " Change ignore_globs
-call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [
-    \ '__pycache__/',
-    \ '.mypy_cache/',
-    \ '.pytest_cache/',
-    \ '*.pyc',
-    \ '.git/',
-    \ '*~',
-    \ '*.sw[po]',
-    \ ])
+if has('win32')
+    call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [
+        \ '__pycache__\',
+        \ '.mypy_cache\',
+        \ '.pytest_cache\',
+        \ '*.pyc',
+        \ '.git\',
+        \ '*~',
+        \ '*.sw[po]',
+        \ ])
+else
+    call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [
+        \ '__pycache__/',
+        \ '.mypy_cache/',
+        \ '.pytest_cache/',
+        \ '*.pyc',
+        \ '.git/',
+        \ '*~',
+        \ '*.sw[po]',
+        \ ])
+
+endif
    " Other Suggestions
-   " Ensure you are doing triailing \ for the right os on dirs
+   " Ensure you are doing trailing \ for the right os on dirs
    " '*.o',
    " '*.exe',
    " '*.bak',
@@ -347,6 +366,8 @@ call denite#custom#source(
 call denite#custom#source(
     \ 'file_rec', 'sorters', ['sorter/sublime'])
 nmap <leader><Space> :<C-u>Denite<Space>
+nmap <leader>' :<C-u>Denite register<CR>
+nmap <leader>b :<C-u>Denite buffer<CR>
 nmap <leader>n :<C-u>Denite file_rec<CR>
 nmap <leader>m :<C-u>Denite file_old<CR>
 
@@ -371,3 +392,6 @@ au FileType awk
 " mbbill/undotree
 " nnoremap <leader>u :UndotreeToggle<cr>
 " let g:undotree_SetFocusWhenToggle = 1
+
+" vim-rooter
+let g:rooter_change_directory_for_non_project_files = 'current'
