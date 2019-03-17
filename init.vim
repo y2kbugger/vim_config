@@ -1,7 +1,5 @@
-" Working around a neovimqt bug
-if has('win32')
-    :bd
-endif
+let g:python3_host_prog='C:\ProgramData\CooperConda\python.exe'
+
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 " example of how to add a new plugin
@@ -28,6 +26,7 @@ execute pathogen#infect()
 " vim-surround # parens
 " tpope/vim-fugitive # git
 " Shougo/neomru.vim # more performant, longer mru for deoplete
+"
 "##################
 " General Settings
 "##################
