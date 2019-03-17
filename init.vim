@@ -332,6 +332,7 @@ else
     call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [
         \ '__pycache__/',
         \ '.mypy_cache/',
+        \ 'emsdk/',
         \ '.pytest_cache/',
         \ '*.pyc',
         \ '.git/',
