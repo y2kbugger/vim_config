@@ -1,5 +1,3 @@
-let g:python3_host_prog='C:\ProgramData\CooperConda\python.exe'
-
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 " example of how to add a new plugin
@@ -44,7 +42,7 @@ filetype plugin indent on
 " allow bright colors without bold colors
 set t_Co=16
 set background=dark
-colorscheme NeoSolarized
+" colorscheme NeoSolarized
 " fixes issue where colors are rendered incorrectly because of bold/italics
 let g:solarized_italic=0
 let g:solarized_bold=0
@@ -214,14 +212,12 @@ au FileType tex
 " when you are in :terminal allow <c-w> to get you all of the way out
 " https://www.reddit.com/r/neovim/comments/6kf7vh/i_have_been_doing_everything_inside_of_neovims/
 tnoremap <C-w> <C-\><C-n><C-w>
-" start terminals in insert mode
-" https://vi.stackexchange.com/questions/3670/how-to-enter-insert-mode-when-entering-neovim-terminal-pane
 au TermOpen,BufWinEnter,WinEnter term://* startinsert
 
 " automatically run a file
 nnoremap <F5> :update<Bar>terminal%<CR>
 au Filetype c,cpp
- \ nnoremap <buffer> <F5> :update<Bar>terminal make<CR>
+ \ nnoremap <buffer> <F5> :update<Bar> terminal cd %:p:h; make <CR>
 au Filetype python
  \ nnoremap <buffer> <F5> :update<Bar>terminal python %<CR>
 au Filetype java
