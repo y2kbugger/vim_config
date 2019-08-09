@@ -30,9 +30,9 @@ execute pathogen#infect()
 "##################
 
 " force in python path on windows
-if has('win32')
+" if has('win32')
     let g:python3_host_prog='C:\ProgramData\CooperConda\pythonw.exe'
-endif
+" endif
 
 " enable syntax highlighting
 syntax enable
@@ -42,7 +42,11 @@ filetype plugin indent on
 " allow bright colors without bold colors
 set t_Co=16
 set background=dark
-" colorscheme NeoSolarized
+
+" if has('win32')
+colorscheme NeoSolarized
+" endif
+
 " fixes issue where colors are rendered incorrectly because of bold/italics
 let g:solarized_italic=0
 let g:solarized_bold=0
