@@ -319,6 +319,22 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Shougo/denite
+" Define mappings
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> p
+  \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> i
+  \ denite#do_map('open_filter_buffer')
+endfunction
+
+autocmd FileType denite-filter call s:denite_filter_my_settings()
+function! s:denite_filter_my_settings() abort
+  imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
+endfunction
+
 " Change ignore_globs
 if has('win32')
     call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [
@@ -371,8 +387,8 @@ call denite#custom#source(
 nmap <leader><Space> :<C-u>Denite<Space>
 nmap <leader>' :<C-u>Denite register<CR>
 nmap <leader>b :<C-u>Denite buffer<CR>
-nmap <leader>n :<C-u>Denite file_rec<CR>
-nmap <leader>m :<C-u>Denite file_old<CR>
+nmap <leader>n :<C-u>Denite -start-filter file/rec<CR>
+nmap <leader>m :<C-u>Denite file/old<CR>
 
 " vimtex
 " mupdf as viewer
