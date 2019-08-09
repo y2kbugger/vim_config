@@ -256,6 +256,9 @@ imap <F5> <ESC><F5>
   au Syntax gitcommit
    \ setlocal spell textwidth=72
 
+  au FileType gitconfig
+   \ set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+
 " Functions
 "-----------
 
