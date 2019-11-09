@@ -221,13 +221,46 @@ au TermOpen,BufWinEnter,WinEnter term://* startinsert
 " automatically run a file
 nnoremap <F5> :update<Bar>terminal%<CR>
 au Filetype c,cpp
- \ nnoremap <buffer> <F5> :update<Bar> terminal cd %:p:h; make <CR>
+ \ nnoremap <buffer> <F5> :wa<Bar>:!touch %<Bar>make<CR>
 au Filetype python
- \ nnoremap <buffer> <F5> :update<Bar>terminal python %<CR>
+ \ nnoremap <buffer> <F5> :wa<Bar>terminal python %<CR>
 au Filetype java
- \ nnoremap <buffer> <F5> :update<Bar>execute javac %<CR>
+ \ nnoremap <buffer> <F5> :wa<Bar>execute javac %<CR>
 au BufReadPost *.rkt,*.rktl
- \ nnoremap <buffer> <F5> :update<Bar>terminal racket %<CR>
+ \ nnoremap <buffer> <F5> :wa<Bar>terminal racket %<CR>
+
+set autoread
+au BufWritePost *.c,*.h silent call FormatC()
+function FormatC()
+    !indent -kr --no-tabs %
+    !touch -d @$(($(stat -c \%X %) + 3)) %
+    " reloading via edit makes the buffer jump
+    " but checktime has a threshold time that causes it
+    " not to reload so I am artifially bumping the timestamp
+    " Not this only happens when a file is already to be written.
+    " so it shouldn't affect things like make that rely on mtime.
+    checktime
+endfunction
+
+function KleenKindlePaste()
+    "This was make specifically for copying from k&r C Programming Language
+    "on cloud kindle reader using Kindle Optimizer Pro Chromium extension
+
+    "back-convert existing chars
+    silent! %s/ / /g " backup spaces as nbsp
+    silent! %s/\r/ /g " backup newlines as regular space
+
+    " paste text on new line (since now there is only one line)
+    normal ojkp
+
+    "convert chars
+    silent! %s/ /\r/g "newline come in as spaces
+    silent! %s/ / /g "spaces come in as non-breaking spaces
+    silent! %s/−/-/g "This is fucked
+    silent! %s/′/'/g "Comeon why
+    silent! %s/¦/|/g "This makes the text so much clearer, Thanks
+endfunction
+
 
 imap <F5> <ESC><F5>
 
