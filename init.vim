@@ -228,6 +228,8 @@ au Filetype java
  \ nnoremap <buffer> <F5> :wa<Bar>execute javac %<CR>
 au BufReadPost *.rkt,*.rktl
  \ nnoremap <buffer> <F5> :wa<Bar>terminal racket %<CR>
+au BufReadPost *.sh
+ \ nnoremap <buffer> <F5> :wa<Bar>terminal bash %<CR>
 
 set autoread
 au BufWritePost *.c,*.h silent call FormatC()
