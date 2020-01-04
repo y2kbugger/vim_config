@@ -28,3 +28,6 @@
 [submodule "bundle/vim-rooter"]
 	path = bundle/vim-rooter
 	url = https://github.com/airblade/vim-rooter.git
+[submodule "bundle/LanguageClient-neovim"]
+	path = bundle/LanguageClient-neovim
+	url = https://github.com/autozimu/LanguageClient-neovim.git
