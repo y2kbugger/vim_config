@@ -251,6 +251,7 @@ function KleenKindlePaste()
     "back-convert existing chars
     silent! %s/ / /g " backup spaces as nbsp
     silent! %s/\r/ /g " backup newlines as regular space
+    silent! %s/\n/ /g " backup newlines as regular space
 
     " paste text on new line (since now there is only one line)
     normal ojkp
@@ -477,7 +478,6 @@ function SetLSPShortcuts()
     " make the sign column permanent
     " g:LanguageClient_signColumnAlwaysOn was deprecated.
     set signcolumn=yes
-
     " recommends Shougo/echodoc.vim
 "
 endfunction()
