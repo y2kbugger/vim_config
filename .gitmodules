@@ -31,6 +31,7 @@
 [submodule "bundle/LanguageClient-neovim"]
 	path = bundle/LanguageClient-neovim
 	url = https://github.com/autozimu/LanguageClient-neovim.git
+	branch = next
 [submodule "bundle/echodoc.vim"]
 	path = bundle/echodoc.vim
 	url = https://github.com/Shougo/echodoc.vim.git
