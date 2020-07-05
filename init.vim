@@ -458,6 +458,7 @@ let g:rooter_patterns = ['Makefile']
 
 let g:LanguageClient_serverCommands = {
     \ 'c': ['clangd', '-background-index',],
+    \ 'cpp': ['clangd', '-background-index',],
     \ }
 
 " https://github.com/autozimu/LanguageClient-neovim/wiki/Recommended-Settings
