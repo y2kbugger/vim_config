@@ -233,6 +233,9 @@ au Filetype python
  \ nnoremap <buffer> <F5> :wa<Bar>terminal python %<CR>
 au Filetype java
  \ nnoremap <buffer> <F5> :wa<Bar>execute javac %<CR>
+au Filetype mmix nnoremap <buffer> <F5> :wa<Bar>split term://mmixal % && mmix -t2 -l -L %:r.mmo<CR>
+" au FileType mmix call deoplete#custom#buffer_option('auto_complete', v:false)
+au FileType mmix set noet ci pi sts=0 sw=16 ts=16
 au BufReadPost *.rkt,*.rktl
  \ nnoremap <buffer> <F5> :wa<Bar>terminal racket %<CR>
 au BufReadPost *.sh
