@@ -45,6 +45,8 @@ set background=dark
 
 if has('win32')
     colorscheme NeoSolarized
+else
+    colorscheme solarized
 endif
 
 " fixes issue where colors are rendered incorrectly because of bold/italics
