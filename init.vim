@@ -215,6 +215,10 @@ au BufReadPost *.rkt,*.rktl
 au FileType tex
  \ setl sw=2 sts=2 et
 
+"  Fix  last typing mistake from insert and normal mode
+imap <c-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+nmap <c-l> i<c-g>u<Esc>[s1z=`]
+
 " :terminal
 " when you are in :terminal allow <c-w> to get you all of the way out
 " https://www.reddit.com/r/neovim/comments/6kf7vh/i_have_been_doing_everything_inside_of_neovims/
