@@ -92,8 +92,9 @@ set splitright
 
 " set foldmethod=marker
 
-" link X primary with the default register
-set clipboard=unnamed
+" link X secondary with the default register
+" This leaves X primary for highlight type copy
+set clipboard=unnamedplus
 
 " set up tabstops and converting tabs to spaces
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
