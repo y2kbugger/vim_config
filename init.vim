@@ -1,29 +1,5 @@
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
-" example of how to add a new plugin
-"   [y2k@15r vim_config]
-"   $ git submodule add https://github.com/zchee/deoplete-jedi.git bundle/deoplete-jedi
-" to make deoplete-jedi stop at the correct versions use:
-"   [y2k@15r vim_config]
-"   $ git submodule update --init --recursive
-" ie. don't use --remote that you would with syncy2kbug
-
-" Old plugins from windows
-" These were enable before transition to neovim
-" The ones with a + I have reenabled in neovim
-" Plugin 'chrisbra/Recover.vim', {'pinned': 1}
-" Plugin 'tpope/vim-dispatch', {'pinned': 1}
-" Plugin 'hynek/vim-python-pep8-indent', {'pinned': 1}
-
-" Old plugins from linux
-" Plugin 'mbbill/undotree', {'pinned': 1}
-" Plugin 'lervag/vimtex', {'pinned': 1}
-
-" plugins not tried yet
-" w0rp/ale # linter for neovim https://github.com/w0rp/ale/blob/master/doc/ale-python.txt
-" vim-surround # parens
-" tpope/vim-fugitive # git
-" Shougo/neomru.vim # more performant, longer mru for deoplete
 "
 "##################
 " General Settings
@@ -43,11 +19,7 @@ filetype plugin indent on
 set t_Co=16
 set background=dark
 
-if has('win32')
-    colorscheme NeoSolarized
-else
-    colorscheme solarized
-endif
+colorscheme solarized
 
 " fixes issue where colors are rendered incorrectly because of bold/italics
 let g:solarized_italic=0
@@ -358,85 +330,6 @@ nnoremap <silent>  z<Space> :call ToggleFolds()<CR>
 " Plugin Setup
 "##############
 
-" Shougo/deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#jedi#server_timeout = 30
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-imap <expr> <C-Tab> "\<C-v><Tab>"
-
-" Shougo/denite
-" Define mappings
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> p
-  \ denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> i
-  \ denite#do_map('open_filter_buffer')
-endfunction
-
-autocmd FileType denite-filter call s:denite_filter_my_settings()
-function! s:denite_filter_my_settings() abort
-  imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
-endfunction
-
-" Change ignore_globs
-if has('win32')
-    call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [
-        \ '__pycache__\',
-        \ '.mypy_cache\',
-        \ '.pytest_cache\',
-        \ '*.pyc',
-        \ '.git\',
-        \ '*~',
-        \ '*.sw[po]',
-        \ ])
-else
-    call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [
-        \ '__pycache__/',
-        \ '.mypy_cache/',
-        \ 'emsdk/',
-        \ '.pytest_cache/',
-        \ '*.pyc',
-        \ '.git/',
-        \ '*~',
-        \ '*.sw[po]',
-        \ ])
-
-endif
-   " Other Suggestions
-   " Ensure you are doing trailing \ for the right os on dirs
-   " '*.o',
-   " '*.exe',
-   " '*.bak',
-   " '.DS_Store',
-   " '*.pyc',
-   " '*.class',
-   " '.hg/',
-   " '.bzr/',
-   " '.svn/',
-   " 'tags',
-   " 'tags-*',
-   " 'venv/',
-   " 'images/',
-   " '*.min.*',
-   " 'img/',
-   " 'fonts/',
-
-   " Change matchers
-call denite#custom#source(
-    \ 'file_rec', 'matchers', ['matcher/substring', 'matcher/ignore_globs'])
-" Change sorters.From example in docs
-call denite#custom#source(
-    \ 'file_rec', 'sorters', ['sorter/sublime'])
-nmap <leader><Space> :<C-u>Denite<Space>
-nmap <leader>' :<C-u>Denite register<CR>
-nmap <leader>b :<C-u>Denite buffer<CR>
-nmap <leader>n :<C-u>Denite -start-filter file/rec<CR>
-nmap <leader>m :<C-u>Denite file/old<CR>
-
 " vimtex
 " mupdf as viewer
 let g:vimtex_view_method = 'mupdf'
@@ -446,59 +339,11 @@ let g:better_whitespace_ctermcolor = 'green'
 let g:better_whitespace_guicolor = 'green'
 let g:better_whitespace_enabled = 1
 
-" tmhedberg/SimpylFold
-let g:SimpylFold_fold_docstring = 0
-let g:SimpylFold_fold_import = 0
-
-
 " tpope/vim-commentary
 au FileType awk
  \ setlocal commentstring=#\ %s
-
-" mbbill/undotree
-" nnoremap <leader>u :UndotreeToggle<cr>
-" let g:undotree_SetFocusWhenToggle = 1
 
 " vim-rooter
 let g:rooter_change_directory_for_non_project_files = 'current'
 let g:rooter_patterns = ['Makefile']
 
-" autozimu/LanguageClient-neovim
-" Requires set hidden for operations modifying multiple buffers like rename.
-" This is set above already, but this is a reminder
-
-let g:LanguageClient_serverCommands = {
-    \ 'c': ['clangd', '-background-index',],
-    \ 'cpp': ['clangd', '-background-index',],
-    \ }
-
-" https://github.com/autozimu/LanguageClient-neovim/wiki/Recommended-Settings
-function SetLSPShortcuts()
-    nnoremap <F6> :call LanguageClient_contextMenu()<CR>
-    " examples:
-    " nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
-    " nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
-    " nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-    " nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
-    " nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
-    " nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
-    " nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
-    " nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
-    " nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-    " nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
-
-    " make the sign column permanent
-    " g:LanguageClient_signColumnAlwaysOn was deprecated.
-    set signcolumn=yes
-    " recommends Shougo/echodoc.vim
-"
-endfunction()
-
-augroup LSP
-  autocmd!
-  autocmd FileType cpp,c call SetLSPShortcuts()
-augroup END
-
-" Shougo/echodoc.vim
-let g:echodoc#enable_at_startup = 1
-let g:echodoc#type = 'floating'
