@@ -363,6 +363,7 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#jedi#server_timeout = 30
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+imap <expr> <C-Tab> "\<C-v><Tab>"
 
 " Shougo/denite
 " Define mappings
